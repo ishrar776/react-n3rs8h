@@ -3,13 +3,14 @@ import './style.css';
 
 export default function App() {
   const [chkBox, setChkBox] = useState(false);
+  const [value, setValue] = useState('fruit');
   const [values, setValues] = useState({
     message: '',
     chktest: chkBox,
+    drptxt: value,
   });
   const [isSubmit, setIsSubmit] = useState(false);
   const handleChanges = (e) => {
-    setChkBox(e.target.checked);
     const name = e.target.name;
     const value = e.target.value;
     setValues({ ...values, [name]: value });
@@ -18,6 +19,12 @@ export default function App() {
     setChkBox(e.target.checked);
     const name = e.target.name;
     const value = e.target.checked;
+    setValues({ ...values, [name]: value });
+  };
+  const handleChange2 = (e) => {
+    setValue(e.target.value);
+    const name = e.target.name;
+    const value = e.target.value;
     setValues({ ...values, [name]: value });
   };
   const submitdata = (e) => {
@@ -63,6 +70,13 @@ export default function App() {
           value={values.chktest}
           name="chktest"
         ></input>
+      </p>
+      <p>
+        <select name="drptxt" value={values.drptxt} onChange={handleChange2}>
+          <option value="fruit">Fruit</option>
+          <option value="vegetable">Vegetable</option>
+          <option value="meat">Meat</option>
+        </select>
       </p>
       <p>
         <input type="submit" />
