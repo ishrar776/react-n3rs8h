@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
-
 export default function App() {
   const [chkBox, setChkBox] = useState(false);
   const [value, setValue] = useState('fruit');
