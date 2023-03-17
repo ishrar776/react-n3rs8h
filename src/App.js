@@ -27,6 +27,11 @@ export default function App() {
     const value = e.target.value;
     setValues({ ...values, [name]: value });
   };
+  const options = [
+    { label: 'Fruit', value: 'fruit' },
+    { label: 'Vegetable', value: 'vegetable' },
+    { label: 'Meat', value: 'meat' },
+  ];
   const submitdata = (e) => {
     e.preventDefault();
     setIsSubmit(true);
@@ -73,9 +78,12 @@ export default function App() {
       </p>
       <p>
         <select name="drptxt" value={values.drptxt} onChange={handleChange2}>
-          <option value="fruit">Fruit</option>
+          {/* <option value="fruit">Fruit</option>
           <option value="vegetable">Vegetable</option>
-          <option value="meat">Meat</option>
+          <option value="meat">Meat</option> */}
+          {options.map((option) => (
+            <option value={option.value}>{option.label}</option>
+          ))}
         </select>
       </p>
       <p>
