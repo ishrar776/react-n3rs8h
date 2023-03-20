@@ -112,7 +112,7 @@ export default function App() {
         </Routes>
       </Router>
 
-      {/* <form onSubmit={submitdata}>
+      <form onSubmit={submitdata}>
         <h1>Hello StackBlitz!</h1>
         <p>
           <input
@@ -179,7 +179,7 @@ export default function App() {
         <p>
           <input type="submit" />
         </p>
-      </form> */}
+      </form>
     </>
   );
 }
