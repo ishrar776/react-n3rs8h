@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
-import CustomerThank from './customerthanks';
-import {
-  BrowserRouter as Router,
-  Navigate,
-  Route,
-  Routes,
-  useNavigate,
-} from 'react-router-dom';
 export default function App() {
   const [file, setFile] = useState('');
-  const navigate = useNavigate();
   const [chkBox, setChkBox] = useState(false);
   const [value, setValue] = useState('fruit');
   const [radioValue, setradioValue] = useState('Male');
@@ -102,84 +93,75 @@ export default function App() {
           console.log('failed result' + error);
         });
     }
-    navigate('/register');
   };
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/register" element={<CustomerThank />} />
-        </Routes>
-      </Router>
-
-      <form onSubmit={submitdata}>
-        <h1>Hello StackBlitz!</h1>
-        <p>
+    <form onSubmit={submitdata}>
+      <h1>Hello StackBlitz!</h1>
+      <p>
+        <input
+          type="text"
+          onChange={handleChanges}
+          value={values.message}
+          name="message"
+        ></input>
+      </p>
+      <p>
+        <input
+          type="checkbox"
+          onChange={handleChanges1}
+          value={values.chktest}
+          name="chktest"
+        ></input>
+      </p>
+      <p>
+        <select name="drptxt" value={values.drptxt} onChange={handleChange2}>
+          {options.map((option) => (
+            <option value={option.value}>{option.label}</option>
+          ))}
+        </select>
+      </p>
+      <p onChange={handleChange3}>
+        <input
+          type="radio"
+          value={values.rdotxt}
+          name="rdotxt"
+          onClick={() => setradioValue('Male')}
+        />{' '}
+        Male
+        <input
+          type="radio"
+          value={values.rdotxt}
+          name="rdotxt"
+          onClick={() => setradioValue('Female')}
+        />{' '}
+        Female
+        <input
+          type="radio"
+          value={values.rdotxt}
+          name="rdotxt"
+          onClick={() => setradioValue('Other')}
+        />{' '}
+        Other
+      </p>
+      <p>
+        <div id="upload-box">
           <input
-            type="text"
-            onChange={handleChanges}
-            value={values.message}
-            name="message"
-          ></input>
-        </p>
-        <p>
-          <input
-            type="checkbox"
-            onChange={handleChanges1}
-            value={values.chktest}
-            name="chktest"
-          ></input>
-        </p>
-        <p>
-          <select name="drptxt" value={values.drptxt} onChange={handleChange2}>
-            {options.map((option) => (
-              <option value={option.value}>{option.label}</option>
-            ))}
-          </select>
-        </p>
-        <p onChange={handleChange3}>
-          <input
-            type="radio"
-            value={values.rdotxt}
-            name="rdotxt"
-            onClick={() => setradioValue('Male')}
-          />{' '}
-          Male
-          <input
-            type="radio"
-            value={values.rdotxt}
-            name="rdotxt"
-            onClick={() => setradioValue('Female')}
-          />{' '}
-          Female
-          <input
-            type="radio"
-            value={values.rdotxt}
-            name="rdotxt"
-            onClick={() => setradioValue('Other')}
-          />{' '}
-          Other
-        </p>
-        <p>
-          <div id="upload-box">
-            <input
-              type="file"
-              name="uploadfl"
-              value={values.uploadfl}
-              onChange={handleUpload}
-            />
-            <p>Filename: {file.name}</p>
-            <p>File type: {file.type}</p>
-            <p>File size: {file.size} bytes</p>
-            {file && <ImageThumb image={file} />}
-          </div>
-          <div>{file && `${file.name} - ${file.type}`}</div>
-          <button onClick={handleUploadClick}>Upload</button>
-        </p>
-        <p>
-          <input type="submit" />
-        </p>
-      </form>
-    </>
+            type="file"
+            name="uploadfl"
+            value={values.uploadfl}
+            onChange={handleUpload}
+          />
+          <p>Filename: {file.name}</p>
+          <p>File type: {file.type}</p>
+          <p>File size: {file.size} bytes</p>
+          {file && <ImageThumb image={file} />}
+        </div>
+        <div>{file && `${file.name} - ${file.type}`}</div>
+        <button onClick={handleUploadClick}>Upload</button>
+      </p>
+      <p>
+        <input type="submit" />
+      </p>
+    </form>
   );
 }
