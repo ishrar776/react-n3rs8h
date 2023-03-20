@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
 export default function App() {
+  const [file, setFile] = useState('');
   const [chkBox, setChkBox] = useState(false);
   const [value, setValue] = useState('fruit');
   const [radioValue, setradioValue] = useState('Male');
@@ -9,6 +10,7 @@ export default function App() {
     chktest: chkBox,
     drptxt: value,
     rdotxt: radioValue,
+    uploadfl: file,
   });
   const [isSubmit, setIsSubmit] = useState(false);
   const handleChanges = (e) => {
@@ -33,6 +35,31 @@ export default function App() {
     const name = e.target.name;
     const value = e.target.value;
     setValues({ ...values, [name]: value });
+  };
+  const handleUploadClick = () => {
+    if (!file) {
+      return;
+    }
+    // 👇 Uploading the file using the fetch API to the server
+    fetch('https://httpbin.org/post', {
+      method: 'POST',
+      body: file,
+      // 👇 Set headers manually for single file upload
+      headers: {
+        'content-type': file.type,
+        'content-length': `${file.size}`, // 👈 Headers need to be a string
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+  };
+
+  const handleUpload = (e) => {
+    setFile(e.target.files[0]);
+  };
+  const ImageThumb = ({ image }) => {
+    return <img src={URL.createObjectURL(image)} alt={image.name} />;
   };
   const options = [
     { label: 'Fruit', value: 'fruit' },
@@ -115,6 +142,22 @@ export default function App() {
           onClick={() => setradioValue('Other')}
         />{' '}
         Other
+      </p>
+      <p>
+        <div id="upload-box">
+          <input
+            type="file"
+            name="uploadfl"
+            value={values.uploadfl}
+            onChange={handleUpload}
+          />
+          <p>Filename: {file.name}</p>
+          <p>File type: {file.type}</p>
+          <p>File size: {file.size} bytes</p>
+          {file && <ImageThumb image={file} />}
+        </div>
+        <div>{file && `${file.name} - ${file.type}`}</div>
+        <button onClick={handleUploadClick}>Upload</button>
       </p>
       <p>
         <input type="submit" />
