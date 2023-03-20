@@ -3,10 +3,12 @@ import './style.css';
 export default function App() {
   const [chkBox, setChkBox] = useState(false);
   const [value, setValue] = useState('fruit');
+  const [radioValue, setradioValue] = useState('Male');
   const [values, setValues] = useState({
     message: '',
     chktest: chkBox,
     drptxt: value,
+    rdotxt: radioValue,
   });
   const [isSubmit, setIsSubmit] = useState(false);
   const handleChanges = (e) => {
@@ -22,6 +24,12 @@ export default function App() {
   };
   const handleChange2 = (e) => {
     setValue(e.target.value);
+    const name = e.target.name;
+    const value = e.target.value;
+    setValues({ ...values, [name]: value });
+  };
+  const handleChange3 = (e) => {
+    setradioValue(e.target.value);
     const name = e.target.name;
     const value = e.target.value;
     setValues({ ...values, [name]: value });
@@ -84,6 +92,29 @@ export default function App() {
             <option value={option.value}>{option.label}</option>
           ))}
         </select>
+      </p>
+      <p onChange={handleChange3}>
+        <input
+          type="radio"
+          value={values.rdotxt}
+          name="rdotxt"
+          onClick={() => setradioValue('Male')}
+        />{' '}
+        Male
+        <input
+          type="radio"
+          value={values.rdotxt}
+          name="rdotxt"
+          onClick={() => setradioValue('Female')}
+        />{' '}
+        Female
+        <input
+          type="radio"
+          value={values.rdotxt}
+          name="rdotxt"
+          onClick={() => setradioValue('Other')}
+        />{' '}
+        Other
       </p>
       <p>
         <input type="submit" />
