@@ -57,6 +57,9 @@ export default function App() {
 
   const handleUpload = (e) => {
     setFile(e.target.files[0]);
+    const name = e.target.name;
+    const value = e.target.value;
+    setValues({ ...values, [name]: value });
   };
   const ImageThumb = ({ image }) => {
     return <img src={URL.createObjectURL(image)} alt={image.name} />;
