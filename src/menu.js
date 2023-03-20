@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import CustomerThank from './customerthanks';
+//import App from './App';
 import {
   BrowserRouter as Router,
   Navigate,
@@ -13,6 +14,7 @@ const MenuBar = () => {
     <Router>
       <Routes>
         <Route path="/register" element={<CustomerThank />} />
+        <Route path="/" element={<CustomerThank />} />
       </Routes>
     </Router>
   );

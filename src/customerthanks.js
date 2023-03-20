@@ -1,8 +1,8 @@
 import React from 'react';
-//import './style.css';
+import './style.css';
 
 export default function CustomerThank() {
   return (
-    <P>thanks customer we register your profile please check your mail </P>
+    <div>thanks customer we register your profile please check your mail </div>
   );
 }
