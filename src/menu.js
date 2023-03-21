@@ -12,11 +12,13 @@ import {
 } from 'react-router-dom';
 const MenuBar = () => {
   return (
-    <Routes>
-      <Route path="/register" element={<CustomerThank />} />
-      <Route path="/" element={<App />} />
-      <Route path="*" element={<App />} />
-    </Routes>
+    <Router>
+      <Routes>
+        <Route path="/register" element={<CustomerThank />} />
+        <Route path="/" element={<App />} />
+        <Route path="*" element={<App />} />
+      </Routes>
+    </Router>
   );
 };
 export default MenuBar;

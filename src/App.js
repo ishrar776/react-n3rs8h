@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
-import MenuBar from './menu';
+//import MenuBar from './menu';
 export default function App() {
-  //let navigate = useNavigate();
+  let navigate = useNavigate();
   const [file, setFile] = useState('');
   const [chkBox, setChkBox] = useState(false);
   const [value, setValue] = useState('fruit');
@@ -90,16 +90,17 @@ export default function App() {
         .then((response) => {
           console.log('post sucess' + response);
           response.json();
+          navigate('/register');
         })
         //.then((data) => setValues(data.message))
         .catch((error) => {
           console.log('failed result' + error);
         });
+      //navigate('/register');
     }
   };
   return (
     <>
-      <MenuBar />
       <form onSubmit={submitdata}>
         <h1>Hello StackBlitz!</h1>
         <p>
