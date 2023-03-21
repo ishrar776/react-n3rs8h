@@ -15,6 +15,7 @@ const MenuBar = () => {
     <Routes>
       <Route path="/register" element={<CustomerThank />} />
       <Route path="/" element={<App />} />
+      <Route path="*" element={<App />} />
     </Routes>
   );
 };
