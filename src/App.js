@@ -96,7 +96,6 @@ export default function App() {
         .catch((error) => {
           console.log('failed result' + error);
         });
-      //navigate('/register');
     }
   };
   return (
