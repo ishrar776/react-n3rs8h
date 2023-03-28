@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import CustomerThank from './customerthanks';
+import RegisterUser from './registerUser';
 import App from './App';
 //import App from './App';
 import {
@@ -15,6 +16,7 @@ const MenuBar = () => {
     <Router>
       <Routes>
         <Route path="/register" element={<CustomerThank />} />
+        <Route path="/RegisterUser" element={<RegisterUser />} />
         <Route path="/" element={<App />} />
         <Route path="*" element={<App />} />
       </Routes>

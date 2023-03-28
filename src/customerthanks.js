@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 export default function CustomerThank() {
   let navigate = useNavigate();
   return (
@@ -8,6 +8,9 @@ export default function CustomerThank() {
       <div>thanks customer we register your profile please check your mail</div>
       <p>
         <button onClick={() => navigate('/App')}>Back To DashBoard </button>
+      </p>
+      <p>
+        <Link to={'/RegisterUser'}>Details Registered User</Link>
       </p>
     </>
   );
