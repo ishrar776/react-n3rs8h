@@ -33,7 +33,9 @@ export default function CustomerThank() {
           thanks customer we register your profile please check your mail
         </div>
         <p>
-          <Button onClick={() => navigate('/App')}>Back To DashBoard </Button>
+          <Button primary onClick={() => navigate('/App')}>
+            Back To DashBoard{' '}
+          </Button>
         </p>
         <p>
           <Link to={'/RegisterUser'}>Details Registered User</Link>
