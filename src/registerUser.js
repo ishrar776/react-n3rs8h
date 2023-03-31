@@ -1,15 +1,16 @@
 import React from 'react';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
 export default function RegisterUser() {
   let navigate = useNavigate();
   return (
     <>
       <div>Details List of all RegisterUser</div>
       <p>
-        <button onClick={() => navigate('/register')}>
+        <Button onClick={() => navigate('/register')}>
           Back To Register Deatils Page{' '}
-        </button>
+        </Button>
       </p>
       <p>Register user Details 2023</p>
     </>
